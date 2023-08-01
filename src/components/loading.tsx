@@ -11,11 +11,17 @@ interface loadingProps {
 
 export default function loading(props: loadingProps): JSX.Element {
   const { fadeOutDuration = 1000 } = props;
+  const animationRef = React.useRef<LottieView>(null);
+
+  React.useEffect(() => {
+    animationRef.current?.play();
+    return;
+  }, []);
   return (
     <Animated.View
       style={styles.full}
       exiting={FadeOut.duration(fadeOutDuration)}>
-      <LottieView source={Cubes} autoPlay loop style={styles.loading} />
+      <LottieView source={Cubes} ref={animationRef} style={styles.loading} />
     </Animated.View>
   );
 }
