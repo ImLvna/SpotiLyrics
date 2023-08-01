@@ -131,7 +131,7 @@ export default function Lyrics() {
         setLyrics([]);
         setReady(false);
         await refreshLyrics(data.body.item.id, data.body.item.duration_ms);
-        scrollView.current?.scrollTo({y: 0});
+        scrollView.current?.scrollTo({ y: 0 });
         setReady(true);
       }
       const item = data.body.item as iSongData;
@@ -186,7 +186,7 @@ export default function Lyrics() {
 
   const scroll = React.useCallback(
     (event: LayoutChangeEvent) => {
-      const {y} = event.nativeEvent.layout;
+      const { y } = event.nativeEvent.layout;
       if (y > 0) {
         // center the current line
         const screenHeight = Dimensions.get('window').height;

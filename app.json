@@ -12,21 +12,31 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "gay.lvna.spotilyrics"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "gay.lvna.spotilyrics"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "experiments": {
       "tsConfigPaths": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "093d9625-f2bf-426d-b370-238f57b1613b"
+      }
+    },
+    "owner": "imlvna"
   }
 }

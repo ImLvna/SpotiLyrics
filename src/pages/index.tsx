@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, { useCallback, useEffect } from 'react';
 import spotify from '@api/spotify';
 import Lyrics from '@pages/lyrics';
 import {
@@ -9,17 +9,21 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import {StatusBar} from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 import Loading from '@components/loading';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import {SPOTIFY_CLIENT_ID, TOKENSWAP_DOMAIN} from '@env';
+import { SPOTIFY_CLIENT_ID, TOKENSWAP_DOMAIN } from '@env';
 
 import * as WebBrowser from 'expo-web-browser';
-import {makeRedirectUri, ResponseType, useAuthRequest} from 'expo-auth-session';
+import {
+  makeRedirectUri,
+  ResponseType,
+  useAuthRequest,
+} from 'expo-auth-session';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {applicationId} from 'expo-application';
+import { applicationId } from 'expo-application';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -99,7 +103,7 @@ function App(): JSX.Element {
   }, [response]);
 
   return (
-    <View style={[{width: '100%', height: '100%'}]}>
+    <View style={[{ width: '100%', height: '100%' }]}>
       <StatusBar
         style={isDarkMode ? 'light' : 'dark'}
         backgroundColor={backgroundStyle.backgroundColor}
@@ -107,7 +111,7 @@ function App(): JSX.Element {
       {authState === true ? (
         <Lyrics />
       ) : authState === false ? (
-        <View style={{paddingTop: 30}}>
+        <View style={{ paddingTop: 30 }}>
           <Text>Please log in with spotify</Text>
           <View
             style={[
