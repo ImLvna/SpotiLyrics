@@ -1,0 +1,38 @@
+on: [push]
+name: Test
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Test Typing
+        id: typing
+        run: yarn ts:check
+      - name: Test Formatting
+        if: always()
+        id: formatting
+        run: yarn lint
+
+      - name: Record Results
+        if: steps.typing.outcome == 'failure'
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: "Failed to type-check the code.\n\n${{ steps.typing.outputs.result }}"
+
+      - name: Record Results
+        if: steps.formatting.outcome == 'failure'
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: "Failed to lint the code.\n\n${{ steps.formatting.outputs.result }}"

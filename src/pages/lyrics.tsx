@@ -67,7 +67,6 @@ export default function Lyrics() {
         let json = (await data.json()) as ApiLyrics | LyricsError;
         if (json.error) {
           throw new Error(json.message);
-          return;
         }
         json = json as ApiLyrics;
         if (json.syncType === 'UNSYNCED') {

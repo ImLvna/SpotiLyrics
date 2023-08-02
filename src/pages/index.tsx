@@ -1,14 +1,7 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import spotify from '@api/spotify';
 import Lyrics from '@pages/lyrics';
-import {
-  Alert,
-  Button,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { Button, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Loading from '@components/loading';
 
@@ -36,7 +29,7 @@ function App(): JSX.Element {
   };
   const [authState, setAuthState] = React.useState<unsetBoolean>('unset');
 
-  const [request, response, promptAsync] = useAuthRequest(
+  const [_request, response, promptAsync] = useAuthRequest(
     {
       responseType: ResponseType.Code,
       clientId: SPOTIFY_CLIENT_ID, // available on the app page

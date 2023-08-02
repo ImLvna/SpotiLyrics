@@ -7,6 +7,7 @@ module.exports = {
       'error',
       {
         bracketSpacing: true,
+        endOfLine: 'auto',
       },
     ],
   },

@@ -9,7 +9,7 @@ interface loadingProps {
   fadeOutDuration?: number;
 }
 
-export default function loading(props: loadingProps): JSX.Element {
+export default function Loading(props: loadingProps): JSX.Element {
   const { fadeOutDuration = 1000 } = props;
   const animationRef = React.useRef<LottieView>(null);
 
